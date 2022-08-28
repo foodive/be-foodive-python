@@ -36,3 +36,7 @@ jobs:
           # filters:
           #   branches:
           #     only: main # only deploy when on main
+workflows:
+  main:
+    jobs:
+      - build
