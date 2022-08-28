@@ -10,7 +10,7 @@ jobs:
       - checkout
       - python/install-packages:
           pkg-manager: pip
-          command: pip3 install pytest
+          # command: pip3 install pytest
       - run:
           name: Run tests
           command: python -m pytest
