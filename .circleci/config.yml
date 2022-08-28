@@ -39,4 +39,4 @@ jobs:
 workflows:
   test_my_app:
     jobs:
-      - build
+      - build_and_test
