@@ -37,6 +37,6 @@ jobs:
           #   branches:
           #     only: main # only deploy when on main
 workflows:
-  main:
+  test_my_app:
     jobs:
       - build
