@@ -1,7 +1,7 @@
 version: 2.1
 orbs:
   python: circleci/python@2.0.3
-  # heroku: circleci/heroku@1.2.6
+  heroku: circleci/heroku@1.2.6
 
 jobs:
   build_and_test: # this can be any name you choose
@@ -19,26 +19,26 @@ jobs:
           paths:
             - .
 
-  # deploy: # this can be any name you choose
-  #   executor: python/default
-  #   steps:
-  #     - attach_workspace:
-  #         at: ~/project
-  #     - heroku/deploy-via-git:
-  #         force: true # force push when pushing to the heroku remote, see: https://devcenter.heroku.com/articles/git
+  deploy: # this can be any name you choose
+    executor: python/default
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - heroku/deploy-via-git:
+          force: true # force push when pushing to the heroku remote, see: https://devcenter.heroku.com/articles/git
 
-# workflows:
-#   test_my_app:
-#     jobs:
-#       - build_and_test
-      # - deploy:
-      #     requires:
-      #       - build_and_test # only deploy if the build_and_test job has completed
-          # filters:
-          #   branches:
-          #     only: main # only deploy when on main
 workflows:
   test_my_app:
     jobs:
       - build_and_test
+      - deploy:
+          requires:
+            - build_and_test # only deploy if the build_and_test job has completed
+          filters:
+            branches:
+              only: main # only deploy when on main
+# workflows:
+#   test_my_app:
+#     jobs:
+#       - build_and_test
 #heroku
