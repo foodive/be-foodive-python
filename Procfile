@@ -1,1 +1,1 @@
-web: gunicorn {foodive}.wsgi
+web: gunicorn foodive.wsgi
