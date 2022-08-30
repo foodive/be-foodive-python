@@ -2,8 +2,9 @@ from django.shortcuts import render
 from django.http import HttpRequest
 from django.http import HttpResponse
 from django.http import JsonResponse
-from .config import yelp_api_key
+# from .config import yelp_api_key
 import requests
+from .settings import YELP_API_KEY
 # from .serializers import RestaurantSerializer
 
 
@@ -12,7 +13,7 @@ def restaurant_data(request):
     # location = request.GET.get('location','')
     payload = {'location': request.GET.get('location','')}
     # import ipdb; ipdb.set_trace()
-    response = requests.get('https://api.yelp.com/v3/businesses/search', params=payload, headers={'Authorization': yelp_api_key})
+    response = requests.get('https://api.yelp.com/v3/businesses/search', params=payload, headers={'Authorization': 'Bearer' + YELP_API_KEY})
 
     # HttpRequest.content_params
     restaurant = response.json()
