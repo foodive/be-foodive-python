@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-3$y*blf6cs_wt^kq)8@)o=_j!7j9zsq875c6=w3h^yqdma4#ei
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['foodive-be.herokuapp.com']
+ALLOWED_HOSTS = [
+    'foodive-be.herokuapp.com',
+    '127.0.0.1'
+    ]
 
 
 # Application definition
@@ -33,6 +36,7 @@ ALLOWED_HOSTS = ['foodive-be.herokuapp.com']
 INSTALLED_APPS = [
     'foodive',
     'rest_framework',
+    'rest_framework_api_key',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -134,3 +138,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION-CLASSES": [
+        "rest_framework_api_key.permissions.HasAPIKey",
+    ]
+}
