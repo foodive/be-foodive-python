@@ -13,7 +13,7 @@ def restaurant_data(request):
     # location = request.GET.get('location','')
     payload = {'location': request.GET.get('location','')}
     # import ipdb; ipdb.set_trace()
-    response = requests.get('https://api.yelp.com/v3/businesses/search', params=payload, headers={'Authorization': 'Bearer' + YELP_API_KEY})
+    response = requests.get('https://api.yelp.com/v3/businesses/search', params=payload, headers={'Authorization': YELP_API_KEY})
 
     # HttpRequest.content_params
     restaurant = response.json()
