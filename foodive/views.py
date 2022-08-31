@@ -23,8 +23,7 @@ def restaurant_data(request):
           "name": rand_rest['name'],
           "image_url": rand_rest['image_url'],
           "categories": {
-            "category1": rand_rest['categories'][0]['title'],
-            # "category2": rand_rest['categories'][1]['title'],
+            "category1": rand_rest['categories'][0]['title']
           },
           "rating": rand_rest['rating'],
           "coordinates": {
