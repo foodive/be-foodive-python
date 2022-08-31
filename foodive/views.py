@@ -2,16 +2,18 @@ from django.shortcuts import render
 from django.http import HttpRequest
 from django.http import HttpResponse
 from django.http import JsonResponse
-from .config import yelp_api_key
+# from .config import yelp_api_key
 import requests
 import json
 import random
-# from .serializers import RestaurantSerializer
+from .settings import YELP_API_KEY
 
 
 def restaurant_data(request):
     payload = {'location': request.GET.get('location','')}
-    response = requests.get('https://api.yelp.com/v3/businesses/search', params=payload, headers={'Authorization': yelp_api_key})
+
+    # import ipdb; ipdb.set_trace()
+    response = requests.get('https://api.yelp.com/v3/businesses/search', params=payload, headers={'Authorization': YELP_API_KEY})
 
     restaurant = response.json()
     rand_num = random.randint(0,19)
