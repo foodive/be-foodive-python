@@ -34,7 +34,7 @@ YELP_API_KEY = env('YELP_API_KEY')
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = 'django-insecure-3$y*blf6cs_wt^kq)8@)o=_j!7j9zsq875c6=w3h^yqdma4#ei'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
