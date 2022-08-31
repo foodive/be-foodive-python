@@ -122,7 +122,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://127.0.0.1:8000',
     'https://foodive-be.herokuapp.com',
     'https://foodive.herokuapp.com',
-    'http://localhost:3000'
+    'http://localhost:3000',
 ]
 
 # CORS_ALLOW_METHODS = [
