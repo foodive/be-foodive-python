@@ -4,20 +4,39 @@ from django.http import HttpResponse
 from django.http import JsonResponse
 # from .config import yelp_api_key
 import requests
+import json
+import random
 from .settings import YELP_API_KEY
-# from .serializers import RestaurantSerializer
 
 
 def restaurant_data(request):
-    # response = requests.get('https://api.yelp.com/v3/businesses/search?location=chicago', headers={'Authorization': 'Bearer llFKl4YQSGryN4AvEdCkWS13yYb-sNbueMcFrEvwGBdBu8Sk8RIG3kSeod9p5ksV2CJfk969a8AoCA4EovVLl3FgCDZ6ZQeHZ0jGslV4VyHHxkKKiYt7ENagrCjxYnYx'})
-    # location = request.GET.get('location','')
     payload = {'location': request.GET.get('location','')}
+
     # import ipdb; ipdb.set_trace()
     response = requests.get('https://api.yelp.com/v3/businesses/search', params=payload, headers={'Authorization': YELP_API_KEY})
 
-    # HttpRequest.content_params
     restaurant = response.json()
-    # serializer = RestaurantSerializer(response, many=True)
-    # return JsonResponse({"data": response.json()}, safe=False)
-    return JsonResponse({"restaurants": restaurant}, safe=False)
+    rand_num = random.randint(0,19)
+    rand_rest = restaurant['businesses'][rand_num]
+    sample_dict = {
+        "id": "null",
+        "type": "restaurant_info",
+        "attributes": {
+          "name": rand_rest['name'],
+          "image_url": rand_rest['image_url'],
+          "categories": {
+            "category1": rand_rest['categories'][0]['title']
+          },
+          "rating": rand_rest['rating'],
+          "coordinates": {
+            "latitude": rand_rest['coordinates']['latitude'],
+            "longitude": rand_rest['coordinates']['longitude']
+          },
+          "price": rand_rest['price'],
+          "display_address": rand_rest['location']['display_address'],
+          "display_phone": rand_rest['display_phone'],
+    }
+  }
+ 
+    return JsonResponse({"data": sample_dict}, safe=False)
     pass
