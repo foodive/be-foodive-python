@@ -12,9 +12,23 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 
+import environ
+import os
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# reading .env file
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+DEBUG = env('DEBUG')
+# Raises django's ImproperlyConfigured exception if SECRET_KEY not in os.environ
+YELP_API_KEY = env('YELP_API_KEY')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -36,7 +50,7 @@ ALLOWED_HOSTS = [
 INSTALLED_APPS = [
     'foodive',
     'rest_framework',
-    'rest_framework_api_key',
+    # 'rest_framework_api_key',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -139,8 +153,11 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-REST_FRAMEWORK = {
-    "DEFAULT_PERMISSION-CLASSES": [
-        "rest_framework_api_key.permissions.HasAPIKey",
-    ]
-}
+# REST_FRAMEWORK = {
+# 'DEFAULT_PERMISSION_CLASSES': [
+#         'rest_framework.permissions.IsAuthenticated',
+#     ]
+#     # "DEFAULT_PERMISSION-CLASSES": [
+#     #     "rest_framework_api_key.permissions.HasAPIKey"
+#     # ]
+# }
