@@ -34,7 +34,7 @@ YELP_API_KEY = env('YELP_API_KEY')
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3$y*blf6cs_wt^kq)8@)o=_j!7j9zsq875c6=w3h^yqdma4#ei'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -50,6 +50,7 @@ ALLOWED_HOSTS = [
 INSTALLED_APPS = [
     'foodive',
     'rest_framework',
+    'corsheaders',
     # 'rest_framework_api_key',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -60,6 +61,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -89,21 +92,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'foodive.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
-# DATABASES = {
-# 		'default': {
-# 		'ENGINE': 'django.db.backends.postgresql_psycopg2',
-# 		'NAME': 'foodive_development',
-# 		'USER': 'jamesriddle',
-# 		'PASSWORD': '1234',
-# 		'HOST': '127.0.0.1',
-# 		'PORT': '5432',
-#         }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -130,7 +118,23 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    'http://127.0.0.1:8000',
+    'https://foodive-be.herokuapp.com',
+    'https://foodive.herokuapp.com',
 
+]
+
+# CORS_ALLOW_METHODS = [
+#     'GET',
+#     'PATCH',
+#     'POST',
+#     'PUT'
+# ]
+
+# CORS_ALLOW_HEADERS = [
+#     'content-type',
+#     ]
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -152,12 +156,3 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# REST_FRAMEWORK = {
-# 'DEFAULT_PERMISSION_CLASSES': [
-#         'rest_framework.permissions.IsAuthenticated',
-#     ]
-#     # "DEFAULT_PERMISSION-CLASSES": [
-#     #     "rest_framework_api_key.permissions.HasAPIKey"
-#     # ]
-# }
