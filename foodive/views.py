@@ -8,25 +8,29 @@ import json
 import random
 from .settings import YELP_API_KEY
 
-
 def restaurant_data(request):
     payload = {'location': request.GET.get('location','')}
 
-    # import ipdb; ipdb.set_trace()
-    response = requests.get('https://api.yelp.com/v3/businesses/search', params=payload, headers={'Authorization': YELP_API_KEY})
+    response = requests.get('https://api.yelp.com/v3/businesses/search', params=payload, headers={'Authorization': f'Bearer {YELP_API_KEY}'})
 
-    restaurant = response.json()
-    rand_num = random.randint(0,19)
-    rand_rest = restaurant['businesses'][rand_num]
+    restaurants = response.json()
+    businesses = restaurants['businesses']
+    rand_num = random.randint(0,len(businesses) - 1)
+    rand_rest = businesses[rand_num]
+    rand_rest_categories = rand_rest['categories']
+
+    category_list = []
+
+    for i in rand_rest['categories']:
+        category_list.append(i['title'])
+
     sample_dict = {
         "id": "null",
         "type": "restaurant_info",
         "attributes": {
           "name": rand_rest['name'],
           "image_url": rand_rest['image_url'],
-          "categories": {
-            "category1": rand_rest['categories'][0]['title']
-          },
+          "categories": category_list,
           "rating": rand_rest['rating'],
           "coordinates": {
             "latitude": rand_rest['coordinates']['latitude'],
@@ -37,6 +41,6 @@ def restaurant_data(request):
           "display_phone": rand_rest['display_phone'],
     }
   }
- 
+
     return JsonResponse({"data": sample_dict}, safe=False)
     pass
