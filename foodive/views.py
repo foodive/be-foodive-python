@@ -12,12 +12,14 @@ from .settings import YELP_API_KEY
 def restaurant_data(request):
     payload = {'location': request.GET.get('location','')}
 
-    # import ipdb; ipdb.set_trace()
-    response = requests.get('https://api.yelp.com/v3/businesses/search', params=payload, headers={'Authorization': YELP_API_KEY})
-
+    response = requests.get(‘https://api.yelp.com/v3/businesses/search’, params=payload, headers={‘Authorization’: f’Bearer {YELP_API_KEY}’})
     restaurant = response.json()
     rand_num = random.randint(0,19)
     rand_rest = restaurant['businesses'][rand_num]
+
+    if not 'price' in rand_rest:
+        rand_rest['price'] = "n/a"
+
     sample_dict = {
         "id": "null",
         "type": "restaurant_info",
@@ -37,6 +39,6 @@ def restaurant_data(request):
           "display_phone": rand_rest['display_phone'],
     }
   }
- 
+
     return JsonResponse({"data": sample_dict}, safe=False)
     pass
