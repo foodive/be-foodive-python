@@ -6,18 +6,24 @@ from django.http import JsonResponse
 import requests
 import json
 import random
-# from .settings import YELP_API_KEY
-
+from .settings import YELP_API_KEY
 
 def restaurant_data(request):
     payload = {'location': request.GET.get('location','')}
 
-    # import ipdb; ipdb.set_trace()
-    response = requests.get('https://api.yelp.com/v3/businesses/search', params=payload, headers={'Authorization': 'Bearer llFKl4YQSGryN4AvEdCkWS13yYb-sNbueMcFrEvwGBdBu8Sk8RIG3kSeod9p5ksV2CJfk969a8AoCA4EovVLl3FgCDZ6ZQeHZ0jGslV4VyHHxkKKiYt7ENagrCjxYnYx'})
 
-    restaurant = response.json()
-    rand_num = random.randint(0,19)
-    rand_rest = restaurant['businesses'][rand_num]
+    response = requests.get('https://api.yelp.com/v3/businesses/search', params=payload, headers={'Authorization': f'Bearer {YELP_API_KEY}'})
+
+    restaurants = response.json()
+    businesses = restaurants['businesses']
+    rand_num = random.randint(0,len(businesses) - 1)
+    rand_rest = businesses[rand_num]
+    rand_rest_categories = rand_rest['categories']
+
+    category_list = []
+
+    for i in rand_rest['categories']:
+        category_list.append(i['title'])
 
     if not 'price' in rand_rest:
         rand_rest['price'] = "n/a"
@@ -29,9 +35,7 @@ def restaurant_data(request):
         "attributes": {
           "name": rand_rest['name'],
           "image_url": rand_rest['image_url'],
-          "categories": {
-            "category1": rand_rest['categories'][0]['title']
-          },
+          "categories": category_list,
           "rating": rand_rest['rating'],
           "coordinates": {
             "latitude": rand_rest['coordinates']['latitude'],
