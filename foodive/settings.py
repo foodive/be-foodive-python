@@ -26,6 +26,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # reading .env file
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
+# import ipdb; ipdb.set_trace()
+
 DEBUG = env('DEBUG')
 # Raises django's ImproperlyConfigured exception if SECRET_KEY not in os.environ
 YELP_API_KEY = env('YELP_API_KEY')
