@@ -11,6 +11,7 @@ from .settings import YELP_API_KEY
 def restaurant_data(request):
     payload = {'location': request.GET.get('location','')}
 
+
     response = requests.get('https://api.yelp.com/v3/businesses/search', params=payload, headers={'Authorization': f'Bearer {YELP_API_KEY}'})
 
     restaurants = response.json()
@@ -23,6 +24,10 @@ def restaurant_data(request):
 
     for i in rand_rest['categories']:
         category_list.append(i['title'])
+
+    if not 'price' in rand_rest:
+        rand_rest['price'] = "n/a"
+
 
     sample_dict = {
         "id": "null",
