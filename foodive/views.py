@@ -9,6 +9,8 @@ import random
 from .settings import YELP_API_KEY
 
 def restaurant_data(request):
+    # import ipdb; ipdb.set_trace()
+
     payload = {'location': request.GET.get('location',''),'categories': request.GET.get('categories','')}
 
     response = requests.get('https://api.yelp.com/v3/businesses/search', params=payload, headers={'Authorization': f'Bearer {YELP_API_KEY}'})
