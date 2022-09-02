@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'foodive',
     'rest_framework',
     'corsheaders',
+    'django_nose',
     # 'rest_framework_api_key',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -118,6 +119,15 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+]
+
+# Use nose to run all tests
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+# Tell nose to measure coverage on the 'foo' and 'bar' apps
+NOSE_ARGS = [
+    '--with-coverage',
+    '--cover-package=foodive',
 ]
 
 CORS_ALLOWED_ORIGINS = [
