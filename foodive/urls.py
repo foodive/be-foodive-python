@@ -17,8 +17,9 @@ from django.contrib import admin
 from django.urls import path
 from foodive import views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('restaurants/', views.restaurant_data),
+    path('restaurants/', views.Restaurant.restaurant_response),
 
 ]
