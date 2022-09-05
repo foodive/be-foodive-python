@@ -128,6 +128,7 @@ TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 NOSE_ARGS = [
     '--with-coverage',
     '--cover-package=foodive',
+    '--cover-html',
 ]
 
 CORS_ALLOWED_ORIGINS = [
