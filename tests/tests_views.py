@@ -1,20 +1,12 @@
 from django.test import TestCase
-from django.test import Client
-from foodive.models import User
-import foodive.views
-import foodive.serializers
-# import requests
-
 from django.shortcuts import render
-from django.http import HttpRequest
-from django.http import HttpResponse
 from django.http import JsonResponse
 import requests
 import json
 import random
 from foodive.settings import YELP_API_KEY
 from django.test.client import RequestFactory
-# from .serializers import RestaurantSerializer
+
 
 def test_view_url_exists_at_desired_location():
     response = requests.get('https://api.yelp.com/v3/businesses/search?categories=&mexican&chinese&italian&location=chicago', headers={'Authorization': f'Bearer {YELP_API_KEY}'})
