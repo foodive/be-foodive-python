@@ -20,9 +20,8 @@ class Restaurant:
       businesses = restaurants['businesses']
       rand_num = random.randint(0,len(businesses) - 1)
       return businesses[rand_num]
-      
+
   def restaurant_response(request):
       serializer = RestaurantSerializer.serialize_data(Restaurant.restaurant_data(request))
-
       return JsonResponse({"data": serializer}, safe=False)
       pass
