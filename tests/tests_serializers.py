@@ -1,17 +1,5 @@
 from django.test import TestCase
-from django.test import Client
-from foodive.models import User
 import foodive.views
-import foodive.serializers
-# import requests
-
-from django.shortcuts import render
-from django.http import HttpRequest
-from django.http import HttpResponse
-from django.http import JsonResponse
-import requests
-import json
-import random
 from foodive.settings import YELP_API_KEY
 from django.test.client import RequestFactory
 
