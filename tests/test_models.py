@@ -10,4 +10,6 @@ class TestAppModels(TestCase):
         user2 = User.objects.create(location="Some location")
 
         self.assertEqual(str(user), "Hola")
+        #assumes that the User object has a name Hola
         self.assertEqual(str(user2), "Some location")
+        #assumes that the User object has a location "Some Location"

@@ -6,9 +6,13 @@ from django.test.client import RequestFactory
 def test_serializer():
     rf = RequestFactory()
     get_request = rf.get('/restaurants/?location=denver&categories=mexican')
+    #instantiate request
 
     data = foodive.views.Restaurant.restaurant_data(get_request)
+    #get data from the view
+
     serialized_data = foodive.serializers.RestaurantSerializer.serialize_data(data)
+    #have the data serialized by the RestaurantSerializer
 
     assert isinstance(serialized_data['id'], str)
     assert isinstance(serialized_data['type'], str)
@@ -23,3 +27,5 @@ def test_serializer():
     assert isinstance(serialized_data['attributes']['price'], str)
     assert isinstance(serialized_data['attributes']['display_address'], list)
     assert isinstance(serialized_data['attributes']['display_phone'], str)
+
+    #asserting that the return values are the appropriate data type (string, dictionary, float, list, etc.)
