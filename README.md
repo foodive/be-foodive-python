@@ -111,9 +111,6 @@ GET /restaurants/?location=denver&categories=mexican
 - **Heroku App Backend** = https://foodive-be.herokuapp.com/
 
 ## Contributions
-<a href="https://github.com/LukeSwenson06/be-foodive-python/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=LukeSwenson06/be-foodive-python" />
-</a>
 <p>📶@LukeSwenson06 Github: https://github.com/LukeSwenson06 Linkedin: https://www.linkedin.com/in/luke-swenson </p>
 <p>🥟@benistta Github: https://github.com/benistta Linkedin: https://www.linkedin.com/in/becky-nisttahuz/ </p>
 <p>🪴@jimriddle1 Github: https://github.com/jimriddle1 Linkedin: https://www.linkedin.com/in/jim-riddle-b6718037/ </p>
