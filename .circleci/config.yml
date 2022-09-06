@@ -13,7 +13,7 @@ jobs:
           # command: pip3 install pytest
       - run:
           name: Run tests
-          command: python -m pytest
+          command: python manage.py test
       - persist_to_workspace:
           root: ~/project
           paths:
