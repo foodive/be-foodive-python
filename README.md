@@ -114,9 +114,15 @@ GET /restaurants/?location=denver&categories=mexican
 - **Heroku App Backend** = https://foodive-be.herokuapp.com/
 
 ## Contributions
-<p>📶@LukeSwenson06 Github: https://github.com/LukeSwenson06 Linkedin: https://www.linkedin.com/in/luke-swenson </p>
-<p>🥟@benistta Github: https://github.com/benistta Linkedin: https://www.linkedin.com/in/becky-nisttahuz/ </p>
-<p>🪴@jimriddle1 Github: https://github.com/jimriddle1 Linkedin: https://www.linkedin.com/in/jim-riddle-b6718037/ </p>
+#### BackEnd Team
+<p>📶 Luke Swenson:  Github: https://github.com/LukeSwenson06 Linkedin: https://www.linkedin.com/in/luke-swenson </p>
+<p>🥟 Becky Nisttahuz:  Github: https://github.com/benistta Linkedin: https://www.linkedin.com/in/becky-nisttahuz/ </p>
+<p>🪴 Jim Riddle:  Github: https://github.com/jimriddle1 Linkedin: https://www.linkedin.com/in/jim-riddle-b6718037/ </p>
 
+#### FrontEnd Team
+<p>🍲 Lourdes Benites:  Github: https://github.com/lourdesbnts Linkedin: https://www.linkedin.com/in/lourdesbenites/ </p>
+<p>🔖 Kristy Nguyen:  Github: https://github.com/kpn678 Linkedin: https://www.linkedin.com/in/kristypnguyen/ </p>
+<p>🌃 Dylan Duke:  Github: https://github.com/laytonmaes Linkedin: https://www.linkedin.com/in/dylan-duke-005756129/ </p>
+<p>🎨 Grant X Beard:  Github: https://github.com/GrantXBeard Linkedin: https://www.linkedin.com/in/grant-x-beard/ </p>
 
 # Thank You
