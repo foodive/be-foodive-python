@@ -1,4 +1,7 @@
-# Foodive
+<h1 align="center">Foodive</h1>
+<p align="center">
+<img width="364" alt="Screen Shot 2022-09-06 at 8 54 44 PM" src="https://user-images.githubusercontent.com/92293363/188778379-1acef02a-e6be-4505-be9d-2e9d169aea1d.png">
+</p>
 <details>
 <summary> Table of Contents</summary>
 <ol>
