@@ -110,7 +110,7 @@ GET /restaurants/?location=denver&categories=mexican
 
 ## Partner Repository
 - https://github.com/foodive/fe-foodive
-- **Heroku App Frontend**  = https://github.com/foodive/fe-foodive
+- **Heroku App Frontend**  = https://foodive.herokuapp.com/
 - **Heroku App Backend** = https://foodive-be.herokuapp.com/
 
 ## Contributions
